@@ -1,0 +1,60 @@
+<div class="">
+    <div class="row">
+        <div class="col">
+            <h2>Daftar Siswa</h2>
+            <a href="/dataSiswa/add" class="btn btn-primary mb-2">Tambahkan Data Siswa</a>
+
+            <% if (msg.length !== 0) { %>
+                <div class="alert alert-success" role="alert">
+                   <%= msg %>
+                  </div>
+            <% } %>
+            <table class="table table-bordered border-primary">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">JK</th>
+                    <th scope="col">NISN</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">No.KK</th>
+                    <th scope="col">Tingkat Kelas Saat Ini</th>
+                    <th scope="col">Tgl Masuk</th>
+                    <th scope="col">Rombel</th>
+                    <th scope="col">Terdaftar Sebagai</th>
+                    <th scope="col">Tempat Lahir</th>
+                    <th scope="col">aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% if (siswas.length === 0) { %>
+                        <div class="alert alert-danger fw-bold" role="alert">
+                            Daftar Contact Masih Kosong!
+                        </div>
+                    <% } %>
+                    <% siswas.forEach((siswa, i) => { i++ %>
+                     
+                        <tr>
+                            <th scope="row"><%= i++ %></th>
+                            <td><%= siswa.nama %></td>
+                            <td><%= siswa.jk %></td>
+                            <td><%= siswa.nisn %></td>
+                            <td><%= siswa.nik %></td>
+                            <td><%= siswa.nokk %></td>
+                            <td><%= siswa.tingkat %></td>
+                            <td><%= siswa.tgl_masuk.toISOString().split('T')[0] %> </td>                           
+                            <td><%= siswa.rombel %></td>
+                            <td><%= siswa.terdaftar %></td>
+                            <td><%= siswa.ttl %></td>
+                            <td>
+                              <a href="/dataSiswa/edit/<%= siswa.nisn %>" class="btn btn-info badge">Edit</a>
+                                <form action="/dataSiswa?_method=DELETE"  method="post" class="">
+                                  <input type="hidden" name="nisn" value="<%= siswa.nisn %>">
+                                  <button type="submit" class="btn btn-danger badge" onclick="return confirm('Apakah Anda Yakin ingin menghapusnya?')">Hapus</button>
+                            </td>
+                            <% }) %>
+                </tbody>
+              </table>            
+        </div>
+    </div>
+</div>

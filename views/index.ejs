@@ -1,0 +1,21 @@
+
+<div class="">
+    <div class="text-center" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+      <h1>Welcome <%= username %>!</h1>
+      <h5>Nice To Meet You Sir!!</h5>
+    </div>
+  </div>
+    <h4>Daftar Siswa</h4>
+    <% if (siswa.length < 1) { %>
+     <p>Wahhh... Keliatannya Daftar Siswa/i Belum terdaftarkan, Ayo... Daftarkan Namamu!</p>
+    <% } else { %>
+    <% siswa.forEach((siswa) => { %>
+     
+        <ul>
+            <li>
+                <%=  siswa.nama %>
+            </li>
+        </ul>
+        <% }) %>
+        <% } %>
+        <a href="/" class="btn btn-danger mb-3" onclick="return confirm('Apakah Anda Yakin Ingin Keluar?')">Logout</a>

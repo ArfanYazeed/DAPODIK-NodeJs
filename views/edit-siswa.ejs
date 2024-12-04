@@ -1,0 +1,86 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Mengedit Data Contact</h2>
+
+            <% if (typeof errors != 'undefined') { %>
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                  <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                  <% }) %>
+                </ul>
+              </div>
+            <% } %>
+            <form method="post" action="/dataSiswa?_method=PUT">
+              <input type="hidden" name="nisn" value="<%= siswa.nisn %>">
+                <input type="hidden" name="oldNisn" value="<%= siswa.oldNisn || siswa.nisn %>">
+                <div class="mb-3">
+                  <label for="nama" class="form-label">Nama</label>
+                  <input type="text" class="form-control" id="nama" name="nama"
+                  disabled value="<%= siswa.nama %>"/>
+                </div>
+                <div class="mb-3">
+                  <label for="jk" class="form-label">JK</label>
+                  <input type="text" class="form-control" id="jk" name="jk"
+                  disabled value="<%= siswa.jk %>"/>
+                </div> 
+                <div class="mb-3">
+                  <label for="nisn" class="form-label">NISN</label>
+                  <input type="nisn" class="form-control" id="nisn" name="nisn"
+                  disabled value="<%= siswa.nisn %>"/>
+                  </div>
+                <div class="mb-3">
+                  <label for="nik" class="form-label">NIK</label>
+                  <input type="nik" class="form-control" id="nik" name="nik"
+                  disabled value="<%= siswa.nik %>"/>
+                  </div>
+                <div class="mb-3">
+                  <label for="nokk" class="form-label">No.KK</label>
+                  <input type="nokk" class="form-control" id="nokk" name="nokk"
+                  disabled value="<%= siswa.nokk %>"/>
+                  </div>
+                <div class="mb-3">
+                  <label for="tingkat" class="form-label">Tingkat Kelas Saat Ini</label>
+                  <select class="form-control" id="tingkat" name="tingkat" required value="">
+                    <option value="<%= siswa.tingkat %>"><%= siswa.tingkat %></option>
+                    <option value="X">X</option>
+                    <option value="XI">XI</option>
+                    <option value="XII">XII</option>
+                  </select>
+                  </div>
+                <div class="mb-3">
+                  <label for="tgl_masuk" class="form-label">Tgl Masuk</label>
+                  <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk"
+                  required value="<%= siswa.tgl_masuk%>"
+                  max="<%= new Date('2024-11-30').toISOString().split('T')[0]; %>"/>
+                  </div>
+                <div class="mb-3">
+                  <label for="rombel" class="form-label">Rombel</label>
+                  <select class="form-control" id="rombel" name="rombel" required value="">
+                    <option value="<%= siswa.rombel %>"><%= siswa.rombel %></option>
+                    <option value="PPLG 1">PPLG 1</option>
+                    <option value="PPLG 2">PPLG 2</option>
+                    <option value="RPL 1">RPL 1</option>
+                    <option value="RPL 2">RPL 2</option>
+                  </select>
+                  </div>
+                <div class="mb-3">
+                  <label for="terdaftar" class="form-label">Terdaftar</label>
+                  <select class="form-control" id="terdaftar" name="terdaftar" required >
+                    <option value="<%= siswa.terdaftar %>"><%= siswa.terdaftar %></option>
+                    <option value="Pindahan">Pindahan</option>
+                    <option value="Siswa Baru">Siswa Baru</option>
+                  </select>
+                  </div>
+                <div class="mb-3">
+                  <label for="ttl" class="form-label">Tempat Lahir</label>
+                  <input type="ttl" class="form-control" id="ttl" name="ttl"
+                  disabled value="<%= siswa.ttl %>"/>
+                  </div>
+                <button type="submit" class="btn btn-primary" onclick="return confirm('Apakah Anda Yakin Ingin Mengubahnya?, Sebelum Mengubah Data Sebaiknya diPerhatikan Terlebih Lagi!')">
+                  Edit</button>
+              </form>
+        </div>
+    </div>
+</div>
